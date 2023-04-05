@@ -4,9 +4,9 @@ namespace PaymentSystem.Abstract.Interface
 {
     public interface IMerchant
     {
-        Task<IEnumerable<MerchantDTO>> GetMErchants();
-        Task <MerchantDTO> GetMarchant(int id);
-        Task<int> CreteMerchant(MerchantDTO marchant);
+        Task<IEnumerable<MerchantDTO>> GetMerchants();
+        Task <MerchantDTO> GetMerchant(int id);
+        Task<int> CreateMerchant(MerchantDTO merchant);
             
     }
 }

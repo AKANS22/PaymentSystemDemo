@@ -6,6 +6,6 @@ namespace PaymentSystem.Abstract.Interface
     {
         Task<IEnumerable<MerchantDTO>> GetMErchants();
         Task<MerchantDTO> GetMarchant(int id);
-        Task<int> CreteMerchant(MerchantDTO marchant); 
+        Task<int> CreateMerchant(MerchantDTO marchant); 
     }
 }

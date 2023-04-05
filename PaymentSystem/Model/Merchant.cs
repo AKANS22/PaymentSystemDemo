@@ -5,7 +5,7 @@ namespace PaymentSystem.Model
     public class Merchant
     {
         [Key]
-        public string MerchantId { get; set; }= Guid.NewGuid().ToString();
+        public int MerchantId { get; set; }
         public string Name { get; set;}
         public string Address { get; set;}
         public string Email { get; set;}
