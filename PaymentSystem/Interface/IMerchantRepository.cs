@@ -1,6 +1,12 @@
-﻿namespace PaymentSystem.Abstract.Interface
+﻿using PaymentSystem.DTO;
+
+namespace PaymentSystem.Abstract.Interface
 {
-    public class IMerchant
+    public interface IMerchant
     {
+        Task<IEnumerable<MerchantDTO>> GetMErchants();
+        Task <MerchantDTO> GetMarchant(int id);
+        Task<int> CreteMerchant(MerchantDTO marchant);
+            
     }
 }
