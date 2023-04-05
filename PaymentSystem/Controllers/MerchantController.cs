@@ -16,14 +16,14 @@ namespace PaymentSystem.Controllers
             _merchant = merchant;
         }
 
-        [HttpPost("{merchantid}/{merchant}")]
+        [HttpPost("merchant")]
 
         public async Task<IActionResult> CreateMerchant(MerchantDTO merchant)
         {
             var result = await _merchant.CreateMerchant(merchant);
             return Ok(result);
         }
-        [HttpGet("merchantss")]
+        [HttpGet("merchant")]
         public async Task<IActionResult>GetMerchant(string merchantId)
         {
             var result = await _merchant.GetMerchant(merchantId); 
