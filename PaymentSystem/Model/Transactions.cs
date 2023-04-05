@@ -1,13 +1,17 @@
-﻿namespace PaymentSystem.Model
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PaymentSystem.Model
 {
     public class Transactions
     {
-        public int TranId { get; set; }
+        [Key]
+        public string TranId { get; set; } = Guid.NewGuid().ToString();
         public decimal Amount { get; set; }
         public string CardType { get; set; }
         public string RRN { get; set; }
-        public string TerminalId { get; set; }
-
-        public PaymentTerminal Terminal {get; set } 
+     
+        [ForeignKey(("TerminalId"))]
+        public PaymentTerminal Terminal { get; set; } 
     }
 }

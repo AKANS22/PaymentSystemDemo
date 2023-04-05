@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PaymentSystem.Abstract.Interface;
 using PaymentSystem.DTO;
+using PaymentSystem.Model;
 using PaymentSystem.PaymentDbContext;
 
 namespace PaymentSystem.Repository
@@ -13,24 +15,27 @@ namespace PaymentSystem.Repository
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<int> CreateMerchant(<MerchantDTO> marchant)
+
+        public async Task<string> CreateMerchant(MerchantDTO merchant)
         {
-            throw new NotImplementedException();
+            var merchantEntity = _mapper.Map<Merchant>(merchant);
+            _dbContext.Merchants.Add(merchantEntity);
+            await _dbContext.SaveChangesAsync();
+            return merchantEntity.MerchantId;
+        }
+         
+        public async Task<MerchantDTO> GetMerchant(string id)
+        {
+            var merchant = await _dbContext.Merchants.FindAsync(id);
+            var map = _mapper.Map<MerchantDTO>(merchant);
+            return map;
         }
 
-        public Task<int> CreateMerchant(MerchantDTO marchant)
+        public async Task<IEnumerable<MerchantDTO>> GetMerchants()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<MerchantDTO> GetMerchant(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<MerchantDTO>> GetMerchants()
-        {
-            throw new NotImplementedException();
+            var merchants = await _dbContext.Merchants.ToListAsync();
+            var map = _mapper.Map<IEnumerable<MerchantDTO>>(merchants);
+            return map; 
         }
     }
 }

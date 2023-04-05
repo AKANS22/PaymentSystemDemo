@@ -11,7 +11,7 @@ namespace PaymentSystem
             CreateMap<Merchant, MerchantDTO>().ReverseMap();
             CreateMap<PaymentTerminal, TerminalDTO>().ReverseMap();
             CreateMap<Transactions, TransactionDTO>().ReverseMap();
-            C
+            
 
         }
     }
